@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: services/gateway/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - auth
+      - board
+      - card
+      - notification
+      - analytics
+
+  auth:
+    build:
+      context: .
+      dockerfile: services/auth/Dockerfile
+    ports:
+      - "8001:8001"
+
+  board:
+    build:
+      context: .
+      dockerfile: services/board/Dockerfile
+    ports:
+      - "8002:8002"
+
+  card:
+    build:
+      context: .
+      dockerfile: services/card/Dockerfile
+    ports:
+      - "8003:8003"
+
+  notification:
+    build:
+      context: .
+      dockerfile: services/notification/Dockerfile
+    ports:
+      - "8004:8004"
+
+  analytics:
+    build:
+      context: .
+      dockerfile: services/analytics/Dockerfile
+    ports:
+      - "8005:8005"

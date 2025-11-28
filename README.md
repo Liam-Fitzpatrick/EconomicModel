@@ -62,6 +62,26 @@ Once running, verify health:
 curl http://localhost:<port>/health
 ```
 
+## Running with Docker Compose
+
+To start all services together from the repository root:
+
+```bash
+docker compose up --build
+```
+
+This builds each image using the existing per-service Dockerfiles and maps the same ports documented above (gateway 8000, auth 8001, board 8002, card 8003, notification 8004, analytics 8005). Stop and remove the stack with:
+
+```bash
+docker compose down
+```
+
+To run a subset of services (for example, gateway plus auth and board):
+
+```bash
+docker compose up --build gateway auth board
+```
+
 ## Testing
 
 Each service provides a pytest skeleton under `services/<service>/tests/test_app.py`. To run tests locally (requires FastAPI dependencies available):
